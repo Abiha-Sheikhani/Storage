@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+.wrapper{
+    border: 3px solid rgba(179, 177, 177, 0.562);
+    padding: 30px;
+   
+}
+
+h1{
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 38px;
+}
+h5{
+    margin-bottom: 20px;
+    text-align: center;
+}
+input{
+    width: 350px;
+    margin: 20px 0px;
+    border: none;
+    border-bottom: 1px solid rgba(169, 168, 168, 0.704);
+    padding: 8px;
+}
+#signUp-btn,#login-btn{
+    padding: 10px 160px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1975D2;
+    color: white;
+    
+}
+h6{
+    text-align: center;
+    margin-top: 10px;
+}
+#id{
+    margin-top: 180px;
+}
+p{
+    text-align: center;
+    margin-top: 40px;
+    font-size: small;
+}
+#google{
+     padding: 10px 160px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1975D2;
+    color: white;
+    margin-top: 15px;
+}
+.password-wrapper {
+    position: relative;
+    width: 350px;
+    margin: 20px 0;
+}
+
+.password-wrapper input {
+    width: 350px;
+    border: none;
+    border-bottom: 1px solid rgba(169, 168, 168, 0.704);
+}
+
+.password-wrapper .material-symbols-outlined {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    color: #555;
+}
