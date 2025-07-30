@@ -333,34 +333,64 @@ async function deletePost(postId) {
 
 // edit post
 
-async function editPost(postID2,post_title,post_description){
+async function editPost(postID2, post_title, post_description) {
 
-const { value: formValues } = await Swal.fire({
-  title: "Edit Post",
-  html: `
+  const { value: formValues } = await Swal.fire({
+    title: "Edit Post",
+    html: `
     <input id="swal-input1" class="swal2-input" placeholder="Enter Title" value="${post_title}">
     <textarea id="swal-input2" class="swal2-input" placeholder="Enter Description" >${post_description}</textarea>
   `,
-  focusConfirm: false,
-  preConfirm: () => {
-    return [
-      document.getElementById("swal-input1").value,
-      document.getElementById("swal-input2").value
-    ];
+    focusConfirm: false,
+    preConfirm: () => {
+      return [
+        document.getElementById("swal-input1").value,
+        document.getElementById("swal-input2").value
+      ];
+    }
+  });
+  if (formValues) {
+    Swal.fire(JSON.stringify(formValues));
   }
-});
-if (formValues) {
-  Swal.fire(JSON.stringify(formValues));
-}
-if(formValues){
-  const [editedTitle,editedDescription] = formValues
-  const { error } = await client
-  .from('Posts')
-  .update({ Title: editedTitle,Description:editedDescription })
-  .eq('UID', postID2)
-  console.log(error);
-  
-}
+  if (formValues) {
+    const [editedTitle, editedDescription] = formValues
+    const { error } = await client
+      .from('Posts')
+      .update({ Title: editedTitle, Description: editedDescription })
+      .eq('UID', postID2)
+    console.log(error);
+
+  }
 
 }
 
+
+// logout function
+logoutBtn = document.getElementById('logoutBtn');
+
+logoutBtn &&
+  logoutBtn.addEventListener('click', async () => {
+
+    const { error } = await client.auth.signOut()
+    if (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Logout Failed.",
+        text: error.message,
+      });
+
+    }
+    else {
+
+      window.location.href = '/index.html'
+
+    }
+
+  })
+
+ const gettingUser =  async()=>{
+const { data } = await client.auth.getUser()
+console.log(data);
+}
+
+gettingUser()
