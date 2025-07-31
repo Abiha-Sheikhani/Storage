@@ -65,6 +65,7 @@ signupBtn &&
       }, 1500)
 
     }
+    
 
   })
 google &&
@@ -170,7 +171,7 @@ post_button &&
       .insert({
         user_id: user.id,
         Title: post_title,
-        Description: post_description
+        Description: post_description,
       })
     if (error || null) {
       Swal.fire({
@@ -389,8 +390,16 @@ logoutBtn &&
   })
 
  const gettingUser =  async()=>{
-const { data } = await client.auth.getUser()
-console.log(data);
+const { data : {user : {user_metadata}} } = await client.auth.getUser()
+console.log(user_metadata);
+const showName = document.getElementById('showName')
+const showEmail = document.getElementById('showEmail')
+const avator = document.getElementById('avator')
+showName.innerText = user_metadata.full_name || user_metadata.email
+showEmail.innerText = user_metadata.email
+avator.src = user_metadata.avatar_url
 }
 
 gettingUser()
+
+ 
